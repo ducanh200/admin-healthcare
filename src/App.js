@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import Header from './components/layouts/header';
+import Dashbroad from './components/pages/dashbroad';
 
 
 function App() {
@@ -10,9 +10,8 @@ function App() {
     <div className="App">
       <div class="main-wrapper">
         <Routes>
-          {/* <Route path='/' element={<Home/>}/> */}
+          <Route path='/' element={<Dashbroad/>}/>
         </Routes>
-        <Footer></Footer>
       </div>
     </div>
   );
