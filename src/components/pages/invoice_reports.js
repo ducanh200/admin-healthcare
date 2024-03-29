@@ -6,7 +6,14 @@ function Invoice_reports() {
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-bory">
+                                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                        <div style={{ marginTop: "20px", marginLeft: "30px" }}>
+                                            <h3>List Invoice Reports</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body" style={{ paddingTop: "10px" }}>
                                     <div class="table-responsive">
                                         <table class=" table table-hover table-center mb-0">
                                             <thead>

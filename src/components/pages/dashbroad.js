@@ -331,7 +331,7 @@ function Dashbroad() {
                                                 <td>9 Nov 2023 <span class="text-primary d-block">11.00 AM - 11.15 AM</span></td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_1" class="check" checked/>
+                                                        <input type="checkbox" id="status_1" class="check" />
                                                             <label for="status_1" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -356,7 +356,7 @@ function Dashbroad() {
                                                 <td>5 Nov 2023 <span class="text-primary d-block">11.00 AM - 11.35 AM</span></td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_2" class="check" checked/>
+                                                        <input type="checkbox" id="status_2" class="check" />
                                                             <label for="status_2" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -381,7 +381,7 @@ function Dashbroad() {
                                                 <td>11 Nov 2023 <span class="text-primary d-block">12.00 PM - 12.15 PM</span></td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_3" class="check" checked/>
+                                                        <input type="checkbox" id="status_3" class="check" />
                                                             <label for="status_3" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -406,7 +406,7 @@ function Dashbroad() {
                                                 <td>7 Nov 2023<span class="text-primary d-block">1.00 PM - 1.20 PM</span></td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_4" class="check" checked/>
+                                                        <input type="checkbox" id="status_4" class="check" />
                                                             <label for="status_4" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -431,7 +431,7 @@ function Dashbroad() {
                                                 <td>15 Nov 2023 <span class="text-primary d-block">1.00 PM - 1.15 PM</span></td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_5" class="check" checked/>
+                                                        <input type="checkbox" id="status_5" class="check" />
                                                             <label for="status_5" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>

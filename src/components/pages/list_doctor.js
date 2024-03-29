@@ -1,11 +1,21 @@
 function List_doctor() {
     return (
-        <div class="page-wrapper" style={{textAlign: "justify"}}>
+        <div class="page-wrapper" style={{ textAlign: "justify" }}>
             <div class="content container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-bory">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    <div style={{ marginTop: "20px", marginLeft: "30px" }}>
+                                        <h3>List Doctor</h3>
+                                    </div>
+                                    <div style={{ marginTop: "15px", textAlign: "right", marginRight: "30px" }}>
+                                        <a href="/create_doctor" className="btn btn-primary">Create Doctor</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body" style={{ paddingTop: "10px" }}>
                                 <div class="table-responsive">
                                     <table class=" table table-hover table-center mb-0">
                                         <thead>
@@ -30,7 +40,7 @@ function List_doctor() {
                                                 <td>$3100.00</td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_1" class="check" checked />
+                                                        <input type="checkbox" id="status_1" class="check" />
                                                         <label for="status_1" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -47,7 +57,7 @@ function List_doctor() {
                                                 <td>$5000.00</td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_2" class="check" checked />
+                                                        <input type="checkbox" id="status_2" class="check" />
                                                         <label for="status_2" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -64,7 +74,7 @@ function List_doctor() {
                                                 <td>$3300.00</td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_3" class="check" checked />
+                                                        <input type="checkbox" id="status_3" class="check" />
                                                         <label for="status_3" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -81,7 +91,7 @@ function List_doctor() {
                                                 <td>$3500.00</td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_4" class="check" checked />
+                                                        <input type="checkbox" id="status_4" class="check" />
                                                         <label for="status_4" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -98,7 +108,7 @@ function List_doctor() {
                                                 <td>$3700.00</td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_5" class="check" checked />
+                                                        <input type="checkbox" id="status_5" class="check" />
                                                         <label for="status_5" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -115,7 +125,7 @@ function List_doctor() {
                                                 <td>$4000.00</td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_6" class="check" checked />
+                                                        <input type="checkbox" id="status_6" class="check" />
                                                         <label for="status_6" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -132,7 +142,7 @@ function List_doctor() {
                                                 <td>$2000.00</td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_7" class="check" checked />
+                                                        <input type="checkbox" id="status_7" class="check" />
                                                         <label for="status_7" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -149,7 +159,7 @@ function List_doctor() {
                                                 <td>$3000.00</td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_8" class="check" checked />
+                                                        <input type="checkbox" id="status_8" class="check" />
                                                         <label for="status_8" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -166,7 +176,7 @@ function List_doctor() {
                                                 <td>$4100.00</td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_9" class="check" checked />
+                                                        <input type="checkbox" id="status_9" class="check" />
                                                         <label for="status_9" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>
@@ -183,7 +193,7 @@ function List_doctor() {
                                                 <td>$3500.00</td>
                                                 <td>
                                                     <div class="status-toggle">
-                                                        <input type="checkbox" id="status_10" class="check" checked />
+                                                        <input type="checkbox" id="status_10" class="check" />
                                                         <label for="status_10" class="checktoggle">checkbox</label>
                                                     </div>
                                                 </td>

@@ -110,9 +110,8 @@ function Header() {
                                 <p className="text-muted mb-0">Administrator</p>
                             </div>
                         </div>
-                        <a className="dropdown-item" href="profile.html">My Profile</a>
-                        <a className="dropdown-item" href="settings.html">Settings</a>
-                        <a className="dropdown-item" href="login.html">Logout</a>
+                        <a className="dropdown-item" href="/profile">My Profile</a>
+                        <a className="dropdown-item" href="/#">Logout</a>
                     </div>
                 </li>
             </ul>
