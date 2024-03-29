@@ -8,10 +8,7 @@ function Sidebar() {
                             <a href="/dashbroad"><i className="fe fe-home"></i> <span>Dashboard</span></a>
                         </li>
                         <li>
-                            <a href="/medicine"><i className="fe fe-layout"></i> <span>Medicine</span></a>
-                        </li>
-                        <li>
-                            <a href="/doctor"><i className="fe fe-users"></i> <span>Doctor</span></a>
+                            <a href="/create_doctor"><i className="fe fe-users"></i> <span>Create Doctor</span></a>
                         </li>
                         <li>
                             <a href="/profile"><i className="fe fe-user-plus"></i> <span>Profile</span></a>
