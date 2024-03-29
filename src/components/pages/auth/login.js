@@ -1,4 +1,42 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../../../services/api";
+import url from "../../../services/url";
+
 function Login(){
+    const [formErrors, setFormErrors] = useState({
+        email: "",
+        password: "",
+      });
+    const navigate = useNavigate();
+    const [user, setUser] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        password: '',
+    });
+    const [registerSuccess, setRegisterSuccess] = useState(false);
+
+    const handleChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value });
+    };
+
+    const formSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const registerResponse = await api.post(url.ADMIN.REGISTER, user);
+            setRegisterSuccess(true);
+            setTimeout(() => {
+                window.alert('Register success!');
+                navigate('/login');
+            }, 2000);
+        } catch (error) {
+            setFormErrors({
+                email: "Email already in use",
+                password: "Invalid email or password.",
+              });
+        }
+    };
     return(
         <div class="main-wrapper login-body">
 <div class="login-wrapper">
