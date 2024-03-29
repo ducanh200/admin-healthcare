@@ -29,7 +29,14 @@ function App() {
       {!isHomeRoute() && <Sidebar currentLocation={location.pathname}/>}
       <Routes>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/' element={<Dashbroad/>}/>
+        <Route path='/dashbroad' element={<Dashbroad/>}/>
+        <Route path='/create_doctor' element={<Create_doctor/>}/>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/invoice_reports' element={<Invoice_reports/>}/>
+        <Route path='/list_doctor' element={<List_doctor/>}/>
+        <Route path='/list_patient' element={<List_patient/>}/>
+        <Route path='/department' element={<Department/>}/>
+        <Route path='/list_booking' element={<List_booking/>}/>
       </Routes>
     </div>
   );
