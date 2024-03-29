@@ -26,9 +26,6 @@ function Sidebar() {
                             <a href="/list_patient"><i className="fe fe-activity"></i> <span>List Patient</span></a>
                         </li>
                         <li>
-                            <a href="/login"><i className="fe fe-vector"></i> <span>Login</span></a>
-                        </li>
-                        <li>
                             <a href="/department"><i className="fe fe-vector"></i> <span>Department</span></a>
                         </li>
                         <li>
