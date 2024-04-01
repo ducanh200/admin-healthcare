@@ -9,5 +9,9 @@ const url = {
   
       
    
+
+    ADMIN:{
+        REGISTER:"/admin",
+    }
 }
 export default url;
