@@ -6,6 +6,7 @@ import Dashbroad from './components/pages/dashbroad';
 import Header from './components/layouts/header';
 import Sidebar from './components/layouts/sidebar';
 import Login from './components/pages/login';
+import Department from './components/pages/department';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path='login' element={<Login/>}/>
         <Route path='/' element={<Dashbroad/>}/>
+        <Route path='/department' element={<Department/>}/>
       </Routes>
     </div>
   );
