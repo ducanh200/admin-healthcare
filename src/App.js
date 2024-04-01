@@ -11,10 +11,8 @@ import Profile from './components/pages/profile';
 import Invoice_reports from './components/pages/invoice_reports';
 import List_doctor from './components/pages/list_doctor';
 import List_patient from './components/pages/list_patient';
-import Department from './components/pages/department';
 import List_booking from './components/pages/list_booking';
 import Login from './components/pages/auth/login';
-import Login from './components/pages/login';
 import Department from './components/pages/department';
 
 
