@@ -11,9 +11,9 @@ import Profile from './components/pages/profile';
 import Invoice_reports from './components/pages/invoice_reports';
 import List_doctor from './components/pages/list_doctor';
 import List_patient from './components/pages/list_patient';
-import Department from './components/pages/department';
 import List_booking from './components/pages/list_booking';
 import Login from './components/pages/auth/login';
+import Department from './components/pages/department';
 
 
 function App() {
@@ -37,6 +37,9 @@ function App() {
         <Route path='/list_patient' element={<List_patient/>}/>
         <Route path='/department' element={<Department/>}/>
         <Route path='/list_booking' element={<List_booking/>}/>
+        <Route path='login' element={<Login/>}/>
+        <Route path='/' element={<Dashbroad/>}/>
+        <Route path='/department' element={<Department/>}/>
       </Routes>
     </div>
   );
