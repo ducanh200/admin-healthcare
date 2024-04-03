@@ -6,10 +6,6 @@ const url = {
         EDIT: "/departments"
 
     },
-  
-      
-   
-
     ADMIN:{
         GET:"/admin",
     },
