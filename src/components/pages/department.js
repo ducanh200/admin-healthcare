@@ -22,14 +22,16 @@ function Department(){
 
     const [name,setName] = useState("");
     const [expense,setExpense] = useState("");
+    const [maxBooking,setMaxBooking] = useState("");
     const [description,setDescription] = useState("");
     const [thumbnail,setThumbnail] = useState("");
-    const createDepartment = async ( name,expense,description,thumbnail) => {
+    const createDepartment = async ( name,expense,maxBooking,description,thumbnail) => {
         try {
           const formData = new FormData();
       
           formData.append('name', name);
           formData.append('expense', expense);
+          formData.append('maxBooking', maxBooking);
           formData.append('description',description);
           formData.append('thumbnail', thumbnail); 
           
@@ -49,13 +51,12 @@ function Department(){
       };
       const handlSaveDepartment = async () => {
         try {
-          let res = await createDepartment( name,expense,description, thumbnail);
+          let res = await createDepartment( name,expense,maxBooking,description, thumbnail);
           setName('');
           setExpense('');
+          setMaxBooking('');
           setDescription('');
           setThumbnail(null);
-          
-      
           toast.success('A department is created succeed!');
         } catch (error) {
           console.error("Error create department:", error);
@@ -65,24 +66,26 @@ function Department(){
 
       const [editName,setEditName] = useState("");
       const [editExpense,setEditExpense] = useState("");
+      const [editMaxBooking,setEditMaxBooking] = useState("");
       const [editDescription,setEditDescription] = useState("");
       const [editThumbnail,setEditThumbnail] = useState("");
       const [dataDepartmentEdit, setDataDepartmentEdit] = useState({});
-      const handlEdit = (e)=>{
-           setDataDepartmentEdit(e);
+      const handlEdit = (department)=>{
+           setDataDepartmentEdit(department);
       }
-      const editDeparment = async (id, editName,editExpense,editDescription,editThumbnail) => {
+      const editDeparment = async (id, editName,editExpense,editMaxBooking,editDescription,editThumbnail) => {
         try {
           const formData = new FormData();
           formData.append('id', id);
           formData.append('name', editName);
           formData.append('expense', editExpense);
+          formData.append('maxBooking',editMaxBooking);
           formData.append('description',editDescription);
           formData.append('thumbnail', editThumbnail); 
           
     
       
-          const response = await axios.put(url.DEPARTMENT.EDIT, formData, {
+          const response = await axios.put(url.DEPARTMENT.EDIT`${dataDepartmentEdit.id}`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },
@@ -97,11 +100,12 @@ function Department(){
       const handlEditDepartment= async () => {
         try {
           let res = await editDeparment( dataDepartmentEdit.id, editName,editExpense,editDescription,editThumbnail);
-          setName('');
-          setExpense('');
-          setDescription('');
-          setThumbnail(null);
-    
+          setEditName('');
+          setEditExpense('');
+          setEditMaxBooking('');
+          setEditDescription('');
+          setEditThumbnail(null);
+    console.log(res);
           toast.success('A department is created succeed!');
         } catch (error) {
           console.error("Error create department:", error);
@@ -111,10 +115,34 @@ function Department(){
       useEffect(()=>{
             setEditName(dataDepartmentEdit.name);
             setEditExpense(dataDepartmentEdit.expense);
+            setEditMaxBooking(dataDepartmentEdit.maxBooking);
             setEditDescription(dataDepartmentEdit.description);
             setEditThumbnail(dataDepartmentEdit.thumbnail);
       },[dataDepartmentEdit])
-    
+
+
+      const [dataDepartmentDelete, setDataDepartmentDelete] = useState({});
+      const handlDelete = (department)=>{
+        setDataDepartmentDelete(department);
+   }
+      const DeleteDepartment = (id) => {
+        return axios.delete(`http://localhost:8080/api/v3/departments/${id}`);
+      }
+      const ConfirmDelete = async () => {
+        try {
+          const res = await DeleteDepartment(dataDepartmentDelete.id);
+      
+          if (res.status === 200) {
+            toast.success('Delete Success');
+            
+          } else {
+            toast.error('An error occurred while deleting the department');
+          }
+        } catch (error) {
+          toast.error("An erroer!");
+          console.error('Error deleting department:', error);
+        }
+      }
     return(
 <>
 <div class="page-wrapper">
@@ -145,6 +173,7 @@ function Department(){
 <th>ID</th>
 <th>Department</th>
 <th>Expense</th>
+<th>Max Booking</th>
 <th>Description</th>
 <th>Action</th>
 </tr>
@@ -163,13 +192,14 @@ function Department(){
 </h2>
 </td>
 <td>{department.expense}$</td>
+<td>{department.maxBooking}</td>
 <td>{department.description}</td>
 <td>
 <div class="actions">
 <a class="btn btn-sm bg-success-light" data-bs-toggle="modal" href="#edit_specialities_details" onClick={()=>handlEdit(department)}>
 <i class="fe fe-pencil"></i> Edit
 </a>
-<a data-bs-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
+<a data-bs-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light"onClick={()=>handlDelete(department)} >
 <i class="fe fe-trash"></i> Delete
 </a>
 </div>
@@ -198,7 +228,7 @@ function Department(){
 <div class="modal-body">
 <form>
 <div class="row">
-<div class="col-sm-6">
+<div class="col-sm-12">
 <div class="mb-3">
 <label class="mb-2">Name</label>
 <input type="text" class="form-control" value={name} onChange={(event) => setName(event.target.value)}/>
@@ -208,6 +238,12 @@ function Department(){
 <div class="mb-3">
 <label class="mb-2">Expense</label>
 <input type="number" class="form-control" value={expense} onChange={(event) => setExpense(event.target.value)}/>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="mb-3">
+<label class="mb-2">Max Booking</label>
+<input type="number" class="form-control" value={maxBooking} onChange={(event) => setMaxBooking(event.target.value)}/>
 </div>
 </div>
 <div class=" col-sm-12">
@@ -242,7 +278,7 @@ function Department(){
 <div class="modal-body">
 <form>
 <div class="row">
-<div class="col-sm-6">
+<div class="col-sm-12">
 <div class="mb-3">
 <label class="mb-2">Name</label>
 <input type="text" class="form-control" value={editName} onChange={(event) => setEditName(event.target.value)}/>
@@ -252,6 +288,12 @@ function Department(){
 <div class="mb-3">
 <label class="mb-2">Expense</label>
 <input type="number" class="form-control" value={editExpense} onChange={(event) => setEditExpense(event.target.value)}/>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="mb-3">
+<label class="mb-2">Max Booking</label>
+<input type="number" class="form-control" value={editMaxBooking} onChange={(event) => setEditMaxBooking(event.target.value)}/>
 </div>
 </div>
 <div class=" col-sm-12">
@@ -283,8 +325,9 @@ function Department(){
 <div class="form-content p-2">
 <h4 class="modal-title">Delete</h4>
 <p class="mb-4">Are you sure want to delete?</p>
-<button type="button" class="btn btn-primary">Save </button>
 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={()=>ConfirmDelete()}>Save </button>
+
 </div>
 </div>
 </div>

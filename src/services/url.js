@@ -1,9 +1,10 @@
 const url = {
-    BASE_URL: "http://localhost:8080/api/v2",
+    BASE_URL: "http://localhost:8080/api/v3",
     DEPARTMENT:{
         LIST: "/departments",
         CREATE: "/departments",
-        EDIT: "/departments"
+        EDIT: "/departments/",
+        DELETE:"/departments/"
 
     },
     ADMIN:{

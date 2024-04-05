@@ -4,7 +4,6 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Header from './components/layouts/header';
 import Sidebar from './components/layouts/sidebar';
-
 import Dashbroad from './components/pages/dashbroad';
 import Create_doctor from './components/pages/create_doctor';
 import Profile from './components/pages/profile';
@@ -14,6 +13,7 @@ import List_patient from './components/pages/list_patient';
 import List_booking from './components/pages/list_booking';
 import Login from './components/pages/auth/login';
 import Department from './components/pages/department';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
   };
 
   return (
+    <>
     <div>
       {!isHomeRoute() && <Header currentLocation={location.pathname}/>}
       {!isHomeRoute() && <Sidebar currentLocation={location.pathname}/>}
@@ -41,7 +42,22 @@ function App() {
         <Route path='/' element={<Dashbroad/>}/>
         <Route path='/department' element={<Department/>}/>
       </Routes>
+   
+
     </div>
+       <ToastContainer
+       position="top-right"
+       autoClose={5000}
+       hideProgressBar={false}
+       newestOnTop={false}
+       closeOnClick
+       rtl={false}
+       pauseOnFocusLoss
+       draggable
+       pauseOnHover
+       theme="light"
+       />
+       </>
   );
 }
 
