@@ -3,9 +3,6 @@ const url = {
     DEPARTMENT:{
         LIST: "/departments",
         CREATE: "/departments",
-        EDIT: "/departments/",
-        DELETE:"/departments/"
-
     },
     ADMIN:{
         GET:"/admin",

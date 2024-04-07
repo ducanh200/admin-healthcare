@@ -73,19 +73,15 @@ function Department(){
       const handlEdit = (department)=>{
            setDataDepartmentEdit(department);
       }
-      const editDeparment = async (id, editName,editExpense,editMaxBooking,editDescription,editThumbnail) => {
+      const editDeparment = async ( editName,editExpense,editMaxBooking,editDescription,editThumbnail) => {
         try {
           const formData = new FormData();
-          formData.append('id', id);
           formData.append('name', editName);
           formData.append('expense', editExpense);
           formData.append('maxBooking',editMaxBooking);
           formData.append('description',editDescription);
           formData.append('thumbnail', editThumbnail); 
-          
-    
-      
-          const response = await axios.put(url.DEPARTMENT.EDIT`${dataDepartmentEdit.id}`, formData, {
+          const response = await axios.put(`http://localhost:8080/api/v3/departments/${dataDepartmentEdit.id}`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },
@@ -99,19 +95,21 @@ function Department(){
       };
       const handlEditDepartment= async () => {
         try {
-          let res = await editDeparment( dataDepartmentEdit.id, editName,editExpense,editDescription,editThumbnail);
+          let res = await editDeparment(editName,editExpense,editMaxBooking,editDescription,editThumbnail);
           setEditName('');
           setEditExpense('');
           setEditMaxBooking('');
           setEditDescription('');
           setEditThumbnail(null);
-    console.log(res);
+    
           toast.success('A department is created succeed!');
         } catch (error) {
+
           console.error("Error create department:", error);
           toast.error('An error occurred while create the department.');
         }
       };
+      
       useEffect(()=>{
             setEditName(dataDepartmentEdit.name);
             setEditExpense(dataDepartmentEdit.expense);
@@ -308,9 +306,8 @@ function Department(){
 <textarea type="label" class="form-control" value={editDescription} onChange={(event) => setEditDescription(event.target.value)}/>
 </div>
 </div>
-
 </div>
-<button type="submit" class="btn btn-primary w-100" onClick={()=>handlEditDepartment()}>Save</button>
+<button type="submit" class="btn btn-primary w-100"  onClick={()=>handlEditDepartment()} >Save</button>
 </form>
 </div>
 </div>
