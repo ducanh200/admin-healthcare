@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import api from "../../services/api";
 import url from "../../services/url";
 import { toast } from "react-toastify";
-import axios from "axios";
 function Department(){
     const [departments, setDepartments] = useState([]);
 
@@ -63,16 +62,19 @@ function Department(){
           toast.error('An error occurred while create the department.');
         }
       };
+      
+      const [dataDepartment, setDataDepartment] = useState({});
+      const handlData  = (department)=>{
+           setDataDepartment(department);
+      }
+
 
       const [editName,setEditName] = useState("");
       const [editExpense,setEditExpense] = useState("");
       const [editMaxBooking,setEditMaxBooking] = useState("");
       const [editDescription,setEditDescription] = useState("");
       const [editThumbnail,setEditThumbnail] = useState("");
-      const [dataDepartmentEdit, setDataDepartmentEdit] = useState({});
-      const handlEdit = (department)=>{
-           setDataDepartmentEdit(department);
-      }
+
       const editDeparment = async ( editName,editExpense,editMaxBooking,editDescription,editThumbnail) => {
         try {
           const formData = new FormData();
@@ -81,7 +83,7 @@ function Department(){
           formData.append('maxBooking',editMaxBooking);
           formData.append('description',editDescription);
           formData.append('thumbnail', editThumbnail); 
-          const response = await axios.put(`http://localhost:8080/api/v3/departments/${dataDepartmentEdit.id}`, formData, {
+          const response = await api.put(url.DEPARTMENT.EDIT+`${dataDepartment.id}`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },
@@ -111,24 +113,21 @@ function Department(){
       };
       
       useEffect(()=>{
-            setEditName(dataDepartmentEdit.name);
-            setEditExpense(dataDepartmentEdit.expense);
-            setEditMaxBooking(dataDepartmentEdit.maxBooking);
-            setEditDescription(dataDepartmentEdit.description);
-            setEditThumbnail(dataDepartmentEdit.thumbnail);
-      },[dataDepartmentEdit])
+            setEditName(dataDepartment.name);
+            setEditExpense(dataDepartment.expense);
+            setEditMaxBooking(dataDepartment.maxBooking);
+            setEditDescription(dataDepartment.description);
+            setEditThumbnail(dataDepartment.thumbnail);
+      },[dataDepartment])
 
 
-      const [dataDepartmentDelete, setDataDepartmentDelete] = useState({});
-      const handlDelete = (department)=>{
-        setDataDepartmentDelete(department);
-   }
+
       const DeleteDepartment = (id) => {
-        return axios.delete(`http://localhost:8080/api/v3/departments/${id}`);
+        return api.delete(url.DEPARTMENT.DELETE+`${id}`);
       }
       const ConfirmDelete = async () => {
         try {
-          const res = await DeleteDepartment(dataDepartmentDelete.id);
+          const res = await DeleteDepartment(dataDepartment.id);
       
           if (res.status === 200) {
             toast.success('Delete Success');
@@ -194,10 +193,10 @@ function Department(){
 <td>{department.description}</td>
 <td>
 <div class="actions">
-<a class="btn btn-sm bg-success-light" data-bs-toggle="modal" href="#edit_specialities_details" onClick={()=>handlEdit(department)}>
+<a class="btn btn-sm bg-success-light" data-bs-toggle="modal" href="#edit_specialities_details" onClick={()=>handlData(department)}>
 <i class="fe fe-pencil"></i> Edit
 </a>
-<a data-bs-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light"onClick={()=>handlDelete(department)} >
+<a data-bs-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light"onClick={()=>handlData(department)} >
 <i class="fe fe-trash"></i> Delete
 </a>
 </div>
@@ -319,6 +318,7 @@ function Department(){
 <div class="modal-dialog modal-dialog-centered" role="document">
 <div class="modal-content">
 <div class="modal-body">
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 <div class="form-content p-2">
 <h4 class="modal-title">Delete</h4>
 <p class="mb-4">Are you sure want to delete?</p>

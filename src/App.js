@@ -14,6 +14,7 @@ import List_booking from './components/pages/list_booking';
 import Login from './components/pages/auth/login';
 import Department from './components/pages/department';
 import { ToastContainer, toast } from 'react-toastify';
+import Status_1 from './components/pages/booking/status_1';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path='login' element={<Login/>}/>
         <Route path='/' element={<Dashbroad/>}/>
         <Route path='/department' element={<Department/>}/>
+        <Route path='/arrived' element={<Status_1/>}/>
       </Routes>
    
 

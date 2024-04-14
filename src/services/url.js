@@ -3,10 +3,19 @@ const url = {
     DEPARTMENT:{
         LIST: "/departments",
         CREATE: "/departments",
+        EDIT:"/departments/",
+        DELETE:"/departments/"
     },
     ADMIN:{
         GET:"/admin",
     },
+    BOOKING:{
+        LIST: "/bookings",
+        STATUS_CHANGE: "/bookings/updateStatus/"
+    },
+    PATIENT:{
+       GETID: "/patients"
+    }
    
 }
 export default url;
