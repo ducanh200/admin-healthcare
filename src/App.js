@@ -13,6 +13,9 @@ import List_patient from './components/pages/list_patient';
 import List_booking from './components/pages/list_booking';
 import Login from './components/pages/auth/login';
 import Department from './components/pages/department';
+import Medicine from './components/pages/medicine';
+import Create_medicine from './components/pages/create_medicine';
+import Edit_medicine from './components/pages/edit_medicine';
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -41,6 +44,10 @@ function App() {
         <Route path='login' element={<Login/>}/>
         <Route path='/' element={<Dashbroad/>}/>
         <Route path='/department' element={<Department/>}/>
+        
+        <Route path='/medicine' element={<Medicine/>}/>
+        <Route path='/create_medicine' element={<Create_medicine/>}/>
+        <Route path='/edit_medicine/:id' element={<Edit_medicine/>}/>
       </Routes>
    
 

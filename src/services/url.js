@@ -7,6 +7,13 @@ const url = {
     ADMIN:{
         GET:"/admin",
     },
+    MEDICINE:{
+        LIST: "/medicine",
+        CREATE: "/medicine",
+        EDIT: "/medicine",
+        DELETE: "/medicine",
+        GET:"/medicine/get-by-id"
+    }
    
 }
 export default url;
