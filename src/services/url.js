@@ -14,7 +14,7 @@ const url = {
         STATUS_CHANGE:"/bookings/updateStatus/"
     },
     PATIENT:{
-        LIST:"/patients"
+        GETID:"/patients"
     }
    
 }
