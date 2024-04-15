@@ -9,8 +9,11 @@ function Status_1() {
         const loadBooking = async () => {
             try {
                 const rs = await api.get(url.BOOKING.LIST);
-                const activeBookings = rs.data.filter(booking => booking.status === 1);
-                setBookings(activeBookings);
+                const today = new Date().toISOString().split('T')[0]; 
+                const filteredBookings = rs.data.filter(booking =>
+                    booking.date === today && booking.status === 1
+                );
+                setBookings(filteredBookings);
             } catch (error) {
                 console.error("Error loading list booking:", error);
             }
