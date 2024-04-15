@@ -9,13 +9,6 @@ const url = {
     ADMIN:{
         GET:"/admin",
     },
-    BOOKING:{
-        LIST: "/bookings",
-        STATUS_CHANGE: "/bookings/updateStatus/"
-    },
-    PATIENT:{
-       GETID: "/patients"
-    }
    
 }
 export default url;
