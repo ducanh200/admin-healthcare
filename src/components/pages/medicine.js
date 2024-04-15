@@ -27,6 +27,7 @@ function Medicine() {
 
 
     return (
+        <>
         <div className="page-wrapper" style={{ textAlign: "justify" }}>
             <div className="content container-fluid">
                 <div className="row">
@@ -38,7 +39,7 @@ function Medicine() {
                                         <h3>List Medicine</h3>
                                     </div>
                                     <div style={{ marginTop: "15px", textAlign: "right", marginRight: "30px" }}>
-                                        <a href="/create_medicine" className="btn btn-primary">Create Medicine</a>
+                                        <a href="#Add_Specialities_details" data-bs-toggle="modal" class="btn btn-primary float-end mt-2">Create Medicine</a>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +78,47 @@ function Medicine() {
                     </div>
                 </div>
             </div>
+
         </div>
+        <div class="modal fade" id="Add_Specialities_details" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Add Department</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <form>
+        <div class="row">
+        
+
+        <div class="col-sm-6">
+        <div class="mb-3">
+        <label class="mb-2">Max Booking</label>
+        <input type="number" class="form-control"/>
+        </div>
+        </div>
+        <div class=" col-sm-12">
+        <div class="mb-3">
+        <label class="mb-2">Image</label><br/>
+        <input type="file"   />
+        </div>
+        </div>
+        <div class="col-sm-12">
+        <div class="mb-3">
+        <label class="mb-2">Description</label>
+        <textarea type="label" class="form-control" />
+        </div>
+        </div>
+        
+        </div>
+        <button type="submit" class="btn btn-primary w-100" >Save</button>
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        </>
     );
 }
 
