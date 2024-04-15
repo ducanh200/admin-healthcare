@@ -15,7 +15,7 @@ function Edit_medicine({ medicine }) {
             [name]: value
         }));
     };
-
+console.log(editedMedicine);
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -24,7 +24,7 @@ function Edit_medicine({ medicine }) {
         } catch (error) {
             console.error('Error updating medicine:', error);
         }
-        window.location.href = '/medicine';
+
     };
 
     return (

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
@@ -44,7 +44,11 @@ function App() {
         <Route path='/list_booking' element={<List_booking/>}/>
         <Route path='login' element={<Login/>}/>
         <Route path='/' element={<Dashbroad/>}/>
-        <Route path='/department' element={<Department/>}/>
+        <Route path='/arrived' element={<Status_1/>}/>
+        <Route path='/medicine' element={<Medicine/>}/>
+        <Route path='/create_medicine' element={<Create_medicine/>}/>
+        <Route path='/edit_medicine/:id' element={<Edit_medicine/>}/>
+
       </Routes>
    
 
