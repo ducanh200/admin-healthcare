@@ -15,7 +15,14 @@ const url = {
     },
     PATIENT:{
         LIST:"/patients"
-    }
+    },
+    MEDICINE:{
+        LIST: "/medicine",
+        CREATE: "/medicine",
+        EDIT:"/medicine/",
+        DELETE:"/medicine/"
+    },
+    
    
 }
 export default url;
