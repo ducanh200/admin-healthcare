@@ -25,6 +25,7 @@ const url = {
     DOCTOR:{
         LIST:"/doctors"
     }
+    
    
 }
 export default url;

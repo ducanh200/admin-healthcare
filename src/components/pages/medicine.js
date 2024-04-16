@@ -49,6 +49,36 @@ function Medicine() {
   const handlData = (medicine) => {
     setDataMedicine(medicine);
   }
+  const [editName, setEditName] = useState("");
+  const editMedicine = async (name) => {
+    try {
+      const requestData = {
+        name: name
+      };
+  
+      const response = await api.put(url.MEDICINE.EDIT + `${dataMedicine.id}`, requestData);
+  
+      return response.data;
+    } catch (error) {
+      console.error("Error updating medicine:", error);
+      throw error;
+    }
+  };
+  const handlEditMedicine = async () => {
+    try {
+      let res = await editMedicine(editName);
+      setEditName('');
+      toast.success('A medicine is updated succeed!');
+    } catch (error) {
+
+      console.error("Error update medicine:", error);
+      toast.error('An error .');
+    }
+  };
+
+  useEffect(() => {
+    setEditName(dataMedicine.name);
+  }, [dataMedicine])
 
   const DeleteMedicine = (id) => {
     return api.delete(url.MEDICINE.DELETE + `${id}`);
@@ -102,10 +132,10 @@ function Medicine() {
                                                         <td style={{ width: '60%' }}>{medicine.name}</td>
                                                         <td style={{ width: '30%' }}>
                                                             <div class="actions">
-                                                                <a data-bs-toggle="modal" href="#edit_Medicine" class="btn btn-sm bg-success-light me-2">
+                                                                <a data-bs-toggle="modal" href="#edit_Medicine" class="btn btn-sm bg-success-light me-2"onClick={() => handlData(medicine)}>
                                                                     <i class="fe fe-pencil"></i> Edit
                                                                 </a>
-                                                                <a class="btn btn-sm bg-danger-light" data-bs-toggle="modal" href="#delete_modal">
+                                                                <a class="btn btn-sm bg-danger-light" data-bs-toggle="modal" href="#delete_modal"onClick={() => handlData(medicine)}>
                                                                     <i class="fe fe-trash"></i> Delete
                                                                 </a>
                                                             </div>
@@ -156,12 +186,12 @@ function Medicine() {
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="mb-3">
-                                            <label class="mb-2">Name</label>
-                                            <input type="text" class="form-control" />
+                                            <label class="mb-2" >Name</label>
+                                            <input type="text" class="form-control" value={editName} onChange={(event) => setEditName(event.target.value)} />
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100" >Update Medicine</button>
+                                <button type="submit" class="btn btn-primary w-100" onClick={() => handlEditMedicine()}  >Update Medicine</button>
                             </form>
                         </div>
                     </div>
