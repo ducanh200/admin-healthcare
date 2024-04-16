@@ -7,7 +7,7 @@ import Sidebar from './components/layouts/sidebar';
 import Dashbroad from './components/pages/dashbroad';
 import Profile from './components/pages/profile';
 import Invoice_reports from './components/pages/invoice_reports';
-import List_doctor from './components/pages/list_doctor';
+import Doctor from './components/pages/doctor';
 import List_patient from './components/pages/list_patient';
 import List_booking from './components/pages/list_booking';
 import Login from './components/pages/auth/login';
@@ -15,7 +15,6 @@ import Department from './components/pages/department';
 import Medicine from './components/pages/medicine';
 import { ToastContainer, toast } from 'react-toastify';
 import Status_1 from './components/pages/booking/status_1';
-import Create_doctor from './components/pages/doctor/create_doctor';
 import { useJwt } from 'react-jwt';
 
 
@@ -66,10 +65,9 @@ const ProtectedLoginRoute = ({ element }) => {
       <Routes>
         <Route path='/login' element={<Login/>}/>
         <Route path='/dashboard' element={<Dashbroad/>}/>
-        <Route path='/create_doctor' element={<Create_doctor/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/invoice_reports' element={<Invoice_reports/>}/>
-        <Route path='/list_doctor' element={<List_doctor/>}/>
+        <Route path='/doctor' element={<Doctor/>}/>
         <Route path='/list_patient' element={<List_patient/>}/>
         <Route path='/department' element={<Department/>}/>
         <Route path='/list_booking' element={<List_booking/>}/>
