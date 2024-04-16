@@ -15,14 +15,14 @@ function Create_doctor() {
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
                                                     <label class="mb-2" for="validationCustom01">First name</label>
-                                                    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required />
+                                                    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" required />
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label class="mb-2" for="validationCustom02">Last name</label>
-                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required />
+                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="" required />
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
@@ -61,17 +61,7 @@ function Create_doctor() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value id="invalidCheck" required />
-                                                    <label class="form-check-label" for="invalidCheck">
-                                                        Agree to terms and conditions
-                                                    </label>
-                                                    <div class="invalid-feedback">
-                                                        You must agree before submitting.
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
                                             <button class="btn btn-primary" type="submit">Create Doctor</button>
                                         </form>
                                     </div>

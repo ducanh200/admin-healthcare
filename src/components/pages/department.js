@@ -81,7 +81,7 @@ function Department(){
           formData.append('maxBooking',editMaxBooking);
           formData.append('description',editDescription);
           formData.append('thumbnail', editThumbnail); 
-          const response = await axios.put(`http://localhost:8080/api/v3/departments/${dataDepartmentEdit.id}`, formData, {
+          const response = await api.put(`${url.DEPARTMENT.UPDATE}/${dataDepartmentEdit.id}`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },

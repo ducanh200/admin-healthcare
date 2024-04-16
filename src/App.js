@@ -5,7 +5,6 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/layouts/header';
 import Sidebar from './components/layouts/sidebar';
 import Dashbroad from './components/pages/dashbroad';
-import Create_doctor from './components/pages/create_doctor';
 import Profile from './components/pages/profile';
 import Invoice_reports from './components/pages/invoice_reports';
 import List_doctor from './components/pages/list_doctor';
@@ -14,6 +13,7 @@ import List_booking from './components/pages/list_booking';
 import Login from './components/pages/auth/login';
 import Department from './components/pages/department';
 import { ToastContainer, toast } from 'react-toastify';
+import Create_doctor from './components/pages/doctor/create_doctor';
 
 
 function App() {
