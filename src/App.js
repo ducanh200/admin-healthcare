@@ -18,6 +18,7 @@ import Status_1 from './components/pages/booking/status_1';
 import Create_doctor from './components/pages/doctor/create_doctor';
 
 
+
 function App() {
   const location = useLocation();
 
@@ -44,6 +45,7 @@ function App() {
         <Route path='/' element={<Dashbroad/>}/>
         <Route path='/arrived' element={<Status_1/>}/>
         <Route path='/medicine' element={<Medicine/>}/>
+       
 
       </Routes>
    
