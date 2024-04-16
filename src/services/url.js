@@ -34,9 +34,6 @@ const url = {
         DELETE:"/doctors",
         
     }
-    DOCTOR:{
-        LIST:"/doctors"
-    }
     
    
 }
