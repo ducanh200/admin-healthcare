@@ -3,20 +3,26 @@ const url = {
     DEPARTMENT:{
         LIST: "/departments",
         CREATE: "/departments",
-        UPDATE:"/departments"
+        EDIT:"/departments/",
+        DELETE:"/departments/"
     },
     ADMIN:{
         GET:"/admin",
     },
-    DOCTOR:{
-        LIST:"/doctors",
-        CREATE:"/doctors",
-        UPDATE:"/doctors",
-        DELETE:"/doctors",
-        CHANGEPASSWORD:"/doctors/changePasswordById",
-        GETBYID:"/doctors",
-        GETBYDEPARTMENTID:"/doctors/departmentId"
-    }
+    BOOKING:{
+        LIST:"/bookings",
+        STATUS_CHANGE:"/bookings/updateStatus/"
+    },
+    PATIENT:{
+        LIST:"/patients"
+    },
+    MEDICINE:{
+        LIST: "/medicine",
+        CREATE: "/medicine",
+        EDIT:"/medicine/",
+        DELETE:"/medicine/"
+    },
+    
    
 }
 export default url;

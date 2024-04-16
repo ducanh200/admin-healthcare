@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
@@ -12,7 +12,9 @@ import List_patient from './components/pages/list_patient';
 import List_booking from './components/pages/list_booking';
 import Login from './components/pages/auth/login';
 import Department from './components/pages/department';
+import Medicine from './components/pages/medicine';
 import { ToastContainer, toast } from 'react-toastify';
+import Status_1 from './components/pages/booking/status_1';
 import Create_doctor from './components/pages/doctor/create_doctor';
 
 
@@ -40,7 +42,9 @@ function App() {
         <Route path='/list_booking' element={<List_booking/>}/>
         <Route path='login' element={<Login/>}/>
         <Route path='/' element={<Dashbroad/>}/>
-        <Route path='/department' element={<Department/>}/>
+        <Route path='/arrived' element={<Status_1/>}/>
+        <Route path='/medicine' element={<Medicine/>}/>
+
       </Routes>
    
 
