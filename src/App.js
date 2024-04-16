@@ -19,6 +19,7 @@ import Create_doctor from './components/pages/doctor/create_doctor';
 import { useJwt } from 'react-jwt';
 
 
+
 function App() {
   const ProtectedRoute = ({ element }) => {
     const token = localStorage.getItem("accessToken");
@@ -76,6 +77,7 @@ const ProtectedLoginRoute = ({ element }) => {
         <Route path='/' element={<Dashbroad/>}/>
         <Route path='/arrived' element={<Status_1/>}/>
         <Route path='/medicine' element={<Medicine/>}/>
+       
 
       </Routes>
 
