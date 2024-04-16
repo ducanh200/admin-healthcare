@@ -22,6 +22,9 @@ const url = {
         EDIT:"/medicine/",
         DELETE:"/medicine/"
     },
+    DOCTOR:{
+        LIST:"/doctors"
+    }
     
    
 }
