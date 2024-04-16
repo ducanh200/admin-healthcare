@@ -5,7 +5,7 @@ function Sidebar() {
                 <div id="sidebar-menu" className="sidebar-menu">
                     <ul>
                         <li>
-                            <a href="/dashbroad"><i className="fe fe-home"></i> <span>Dashboard</span></a>
+                            <a href="/dashboard"><i className="fe fe-home"></i> <span>Dashboard</span></a>
                         </li>
                         <li>
                             <a href="/department"><i className="fe fe-vector"></i> <span>Department</span></a>

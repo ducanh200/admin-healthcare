@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+import api from "../../services/api";
+import url from "../../services/url";
+import { useNavigate } from "react-router-dom";
+
 function Header() {
+    const navigate=useNavigate();
+    const handleLogout = () => {
+        localStorage.removeItem("accessToken");
+        navigate("/login");
+    };
     return (
         <div className="header">
             <div className="header-left">
@@ -105,13 +115,14 @@ function Header() {
                             <div className="avatar avatar-sm">
                                 <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" className="avatar-img rounded-circle" />
                             </div>
+
                             <div className="user-text">
-                                <h6>Ryan Taylor</h6>
-                                <p className="text-muted mb-0">Administrator</p>
+                                <h6>Name</h6>
+                                <p className="text-muted mb-0">email</p>
                             </div>
-                        </div>
+                </div>
                         <a className="dropdown-item" href="/profile">My Profile</a>
-                        <a className="dropdown-item" href="/#">Logout</a>
+                        <a className="dropdown-item" onClick={handleLogout}>Logout</a>
                     </div>
                 </li>
             </ul>

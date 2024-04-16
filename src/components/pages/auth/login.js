@@ -4,37 +4,32 @@ import api from "../../../services/api";
 import url from "../../../services/url";
 
 function Login() {
-    const [formErrors, setFormErrors] = useState({
+    const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
     const navigate = useNavigate();
-    const [user, setUser] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        password: '',
-    });
-    const [registerSuccess, setRegisterSuccess] = useState(false);
+    const [formErrors, setFormErrors] = useState(null);
 
     const handleChange = (e) => {
-        setUser({ ...user, [e.target.name]: e.target.value });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const formSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const registerResponse = await api.post(url.ADMIN.REGISTER, user);
-            setRegisterSuccess(true);
-            setTimeout(() => {
-                window.alert('Register success!');
-                navigate('/login');
-            }, 2000);
-        } catch (error) {
-            setFormErrors({
-                email: "Email already in use",
-                password: "Invalid email or password.",
+            const response = await api.post(url.ADMIN.LOGIN, JSON.stringify(formData), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
+            const token = response.data.token;
+            // Đăng nhập thành công, xử lý logic ở đây (ví dụ: lưu token vào local storage, điều hướng đến trang dashboard)
+            localStorage.setItem("accessToken",token)
+            navigate('/dashboard');
+        } catch (error) {
+            // Đăng nhập thất bại, hiển thị thông báo lỗi
+            setFormErrors("Invalid email or password.");
         }
     };
     return (
@@ -49,13 +44,26 @@ function Login() {
                             <div class="login-right-wrap">
                                 <h1>Login</h1>
                                 <p class="account-subtitle">Access to our dashboard</p>
+                                {formErrors && <p className="text-danger">{formErrors}</p>}
 
-                                <form action="https://doccure.dreamstechnologies.com/html/template/admin/index.html">
+                                <form  onSubmit={handleSubmit}>
                                     <div class="mb-3">
-                                        <input class="form-control" type="text" placeholder="Email" />
+                                        <input className="form-control" 
+                                            type="text" 
+                                            name="email" 
+                                            placeholder="Email" 
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            />
                                     </div>
                                     <div class="mb-3">
-                                        <input class="form-control" type="text" placeholder="Password" />
+                                        <input  className="form-control" 
+                                            type="password" 
+                                            name="password" 
+                                            placeholder="Password" 
+                                            value={formData.password}
+                                            onChange={handleChange}
+                                            />
                                     </div>
                                     <div class="mb-3">
                                         <button class="btn btn-primary w-100" type="submit">Login</button>

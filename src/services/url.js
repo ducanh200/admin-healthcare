@@ -8,6 +8,9 @@ const url = {
     },
     ADMIN:{
         GET:"/admin",
+        LOGIN:"/admin/login",
+        REGISTER:"/admin/register",
+        PROFILE:"/admin/profile"
     },
     BOOKING:{
         LIST:"/bookings",
@@ -22,7 +25,15 @@ const url = {
         EDIT:"/medicine/",
         DELETE:"/medicine/"
     },
-    
+    DOCTOR:{
+        LIST:"/doctors",
+        CREATE:"/doctors",
+        EDIT:"/doctors",
+        GETBYID:"/doctors",
+        GETBYDEPARTMENTID:"/doctors/departmentId",
+        DELETE:"/doctors",
+        
+    }
    
 }
 export default url;
