@@ -13,8 +13,8 @@ import Department from './components/pages/department';
 import Medicine from './components/pages/medicine';
 import { ToastContainer } from 'react-toastify';
 import Status_1 from './components/pages/booking/status_1';
+import Doctor from './components/pages/doctor';
 
-import List_doctor from './components/pages/list_doctor';
 
 function App() {
   const location = useLocation();
@@ -45,7 +45,7 @@ function App() {
               <Route path='/dashboard' element={<Dashbroad/>}/>
               <Route path='/profile' element={<Profile/>}/>
               <Route path='/invoice_reports' element={<Invoice_reports/>}/>
-              <Route path='/list_doctor' element={<List_doctor/>}/>
+              <Route path='/doctor' element={<Doctor/>}/>
               <Route path='/list_patient' element={<List_patient/>}/>
               <Route path='/department' element={<Department/>}/>
               <Route path='/list_booking' element={<List_booking/>}/>

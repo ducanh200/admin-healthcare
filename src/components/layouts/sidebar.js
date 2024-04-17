@@ -11,7 +11,7 @@ function Sidebar() {
                             <a href="/department"><i className="fe fe-vector"></i> <span>Department</span></a>
                         </li>
                         <li>
-                            <a href="doctor"><i className="fe fe-star-o"></i> <span>Doctor</span></a>
+                            <a href="/doctor"><i className="fe fe-star-o"></i> <span>Doctor</span></a>
                         </li>
                         <li>
                             <a href="/list_patient"><i className="fe fe-activity"></i> <span>List Patient</span></a>
