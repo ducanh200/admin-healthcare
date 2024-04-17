@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import api from "../../services/api";
+import api, { setAuthToken } from "../../services/api";
 import url from "../../services/url";
 import { toast } from "react-toastify";
 function Department() {
@@ -8,6 +8,9 @@ function Department() {
   useEffect(() => {
     const loadDepartment = async () => {
       try {
+        const token = localStorage.getItem('accessToken');
+        setAuthToken(token);
+
         const rs = await api.get(url.DEPARTMENT.LIST);
         setDepartments(rs.data);
       } catch (error) {

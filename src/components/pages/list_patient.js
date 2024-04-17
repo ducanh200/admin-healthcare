@@ -5,16 +5,15 @@ import url from "../../services/url";
 function List_patient() {
     const [patients, setPatient] = useState([]);
 
-    const loadPatient = async () => {
-        try {
-            const rs = await api.get(url.PATIENT.LIST);
-            setPatient(rs.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
     useEffect(() => {
+        const loadPatient = async () => {
+            try {
+                const rs = await api.get(url.PATIENT.LIST);
+                setPatient(rs.data);
+            } catch (error) {
+                console.error("Error loading doctors:", error);
+            }
+        };
         loadPatient();
     }, []);
 
