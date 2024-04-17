@@ -8,7 +8,7 @@ function Department() {
   useEffect(() => {
     const loadDepartment = async () => {
       try {
-        const rs = await api.get(url.DEPARTMENT.LIST, {
+        const rs = await api.get(url.DEPARTMENT.LIST, { 
           headers: {
             'Authorization': `Bearer ${token}`, 
           },

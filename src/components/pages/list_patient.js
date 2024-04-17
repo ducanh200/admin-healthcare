@@ -11,7 +11,7 @@ function List_patient() {
                 const rs = await api.get(url.PATIENT.LIST);
                 setPatient(rs.data);
             } catch (error) {
-                console.error("Error loading doctors:", error);
+                console.error("Error loading doctors:", error); 
             }
         };
         loadPatient();

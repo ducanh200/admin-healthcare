@@ -6,7 +6,6 @@ import Sidebar from './components/layouts/sidebar';
 import Dashbroad from './components/pages/dashbroad';
 import Profile from './components/pages/profile';
 import Invoice_reports from './components/pages/invoice_reports';
-import Doctor from './components/pages/doctor';
 import List_patient from './components/pages/list_patient';
 import List_booking from './components/pages/list_booking';
 import Login from './components/pages/auth/login';
@@ -14,8 +13,8 @@ import Department from './components/pages/department';
 import Medicine from './components/pages/medicine';
 import { ToastContainer } from 'react-toastify';
 import Status_1 from './components/pages/booking/status_1';
-import { useJwt } from 'react-jwt';
-import { setAuthToken } from './services/api';
+
+import List_doctor from './components/pages/list_doctor';
 
 function App() {
   const location = useLocation();
@@ -44,7 +43,6 @@ function App() {
           {isLoggedIn && (
             <>
               <Route path='/dashboard' element={<Dashbroad/>}/>
-              <Route path='/create_doctor' element={<Create_doctor/>}/>
               <Route path='/profile' element={<Profile/>}/>
               <Route path='/invoice_reports' element={<Invoice_reports/>}/>
               <Route path='/list_doctor' element={<List_doctor/>}/>
@@ -53,7 +51,6 @@ function App() {
               <Route path='/list_booking' element={<List_booking/>}/>
               <Route path='/arrived' element={<Status_1/>}/>
               <Route path='/medicine' element={<Medicine/>}/>
-              <Route path='/*' element={<Dashbroad/>}/>
             </>
           )}
         </Routes>

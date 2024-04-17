@@ -131,7 +131,7 @@ function Header() {
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIGFwNXyPYyinjA6jMFN3qOl4lvrAukvlA5g&s" alt="User Image" className="avatar-img rounded-circle" />
                             </div>
 
-                            <div className="user-text">
+                            <div className="user-text"> 
                                 <h6>{userInfo ? userInfo.name : "Name"}</h6>
                                 <p className="text-muted mb-0">{userInfo ? userInfo.email : "email"}</p>
                             </div>
