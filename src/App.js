@@ -5,7 +5,6 @@ import Header from './components/layouts/header';
 import Sidebar from './components/layouts/sidebar';
 import Dashbroad from './components/pages/dashbroad';
 import Profile from './components/pages/profile';
-import Invoice_reports from './components/pages/invoice_reports';
 import List_patient from './components/pages/list_patient';
 import List_booking from './components/pages/list_booking';
 import Login from './components/pages/auth/login';
@@ -44,7 +43,6 @@ function App() {
             <>
               <Route path='/dashboard' element={<Dashbroad/>}/>
               <Route path='/profile' element={<Profile/>}/>
-              <Route path='/invoice_reports' element={<Invoice_reports/>}/>
               <Route path='/doctor' element={<Doctor/>}/>
               <Route path='/list_patient' element={<List_patient/>}/>
               <Route path='/department' element={<Department/>}/>

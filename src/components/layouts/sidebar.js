@@ -22,9 +22,6 @@ function Sidebar() {
                         <li>
                             <a href="/medicine"><i className="fe fe-document"></i> <span>Medicine</span></a>
                         </li>
-                        <li>
-                            <a href="/invoice_reports"><i className="fe fe-user"></i> <span>Invoice Reports</span></a>
-                        </li>
                     </ul>
                 </div>
             </div>
