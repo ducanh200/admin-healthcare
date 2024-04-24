@@ -8,12 +8,7 @@ function Department() {
   useEffect(() => {
     const loadDepartment = async () => {
       try {
-        const rs = await api.get(url.DEPARTMENT.LIST, { 
-          headers: {
-            'Authorization': `Bearer ${token}`, 
-          },
-          
-        });
+        const rs = await api.get(url.DEPARTMENT.LIST);
         setDepartments(rs.data);
       } catch (error) {
         console.error("Error loading departments:", error);
