@@ -132,8 +132,8 @@ function Header() {
                             </div>
 
                             <div className="user-text"> 
-                                <h6>{userInfo ? userInfo.name : "Name"}</h6>
-                                <p className="text-muted mb-0">{userInfo ? userInfo.email : "email"}</p>
+                                <h6>{userInfo ? userInfo.name : "Not found !"}</h6>
+                                <p className="text-muted mb-0">{userInfo ? userInfo.email : "Not found !"}</p>
                             </div>
                 </div>
                         {/* <a className="dropdown-item" href="/profile">My Profile</a> */}

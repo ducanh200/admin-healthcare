@@ -199,11 +199,11 @@ function Doctor() {
                                                 <td>{doctor.email}</td>
                                                 <td>{doctor.phonenumber}</td>
                                                 <td><h2 class="table-avatar">
-<a  class="avatar avatar-sm me-2">
-<img class="avatar-img" src={doctor.department.thumbnail} alt="Speciality"/>
-</a>
-{doctor.department.name}
-</h2></td>
+                                                {/* <a  class="avatar avatar-sm me-2">
+                                                <img class="avatar-img" src={doctor.department.thumbnail} alt="Speciality"/>
+                                                </a> */}
+                                                {doctor.department.name}
+                                                </h2></td>
                                                 <td>
                                                 <div class="actions">
                                                 <a class="btn btn-sm bg-success-light" data-bs-toggle="modal" href="#edit_specialities_details" onClick={() => handlData(doctor)}>
