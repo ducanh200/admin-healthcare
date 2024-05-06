@@ -96,9 +96,7 @@ function Status_1() {
                                                {booking.shift.time}<br/>{booking.shift.session}
                                                 </td>
                                                 <td>
-                                                <a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
-<i class="fas fa-times"></i> Delete
-</a>
+                                                
 <a class="btn btn-sm bg-success-light" data-bs-toggle="modal" href="#edit_specialities_details" onClick={()=>handlId(booking.id)} >
 <i class="fas fa-check"></i>  
 Confirm

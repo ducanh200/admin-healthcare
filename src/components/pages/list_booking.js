@@ -1,281 +1,74 @@
+import React, { useEffect, useState } from "react";
+import api from "../../services/api";
+import url from "../../services/url";
+
 function List_booking() {
+    const [listbooking, setListbooking] = useState([]);
+
+    useEffect(() => {
+        const loadListbooking = async () => {
+            try {
+                const rs = await api.get(url.BOOKING.LIST);
+                setListbooking(rs.data);
+            } catch (error) {
+                console.error("Error loading list booking:", error);
+            }
+        };
+        loadListbooking();
+    }, []);
+
+    const getStatusBadgeClass = (status) => {
+        return status === 1 ? "badge rounded-pill bg-success inv-badge" : "badge rounded-pill bg-danger inv-badge";
+    };
+
     return (
-        <div class="page-wrapper" style={{ textAlign: "justify" }}>
-            <div class="content container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-bory">
+        <div className="page-wrapper" style={{ textAlign: "justify" }}>
+            <div className="content container-fluid">
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="card">
+                            <div className="card-bory">
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <div style={{ marginTop: "20px", marginLeft: "30px" }}>
                                         <h3>List Booking</h3>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body" style={{ paddingTop: "10px" }}>
-                                <div class="table-responsive">
-                                    <table class=" table table-hover table-center mb-0">
+                            <div className="card-body" style={{ paddingTop: "10px" }}>
+                                <div className="table-responsive">
+                                    <table className=" table table-hover table-center mb-0">
                                         <thead>
                                             <tr>
-                                                <th>Doctor Name</th>
-                                                <th>Speciality</th>
+                                                <th>Id</th>
                                                 <th>Patient Name</th>
-                                                <th>Appointment Time</th>
+                                                <th>Gender</th>
+                                                <th>Phonenumber</th>
+                                                <th>Department</th>
+                                                <th>Session</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
                                                 <th>Status</th>
-                                                <th>Amount</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-01.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Dr. Ruby Perrin</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Dental</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/patients/patient1.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Charlene Reed </a>
-                                                    </h2>
-                                                </td>
-                                                <td>9 Nov 2023 <span class="text-primary d-block">11.00 AM - 11.15 AM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_1" class="check" />
-                                                        <label for="status_1" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    $200.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Dr. Darren Elder</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Dental</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/patients/patient2.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Travis Trimble </a>
-                                                    </h2>
-                                                </td>
-                                                <td>5 Nov 2023 <span class="text-primary d-block">11.00 AM - 11.35 AM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_2" class="check" />
-                                                        <label for="status_2" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    $300.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-03.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Dr. Deborah Angel</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Cardiology</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/patients/patient3.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Carl Kelly</a>
-                                                    </h2>
-                                                </td>
-                                                <td>11 Nov 2023 <span class="text-primary d-block">12.00 PM - 12.15 PM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_3" class="check" />
-                                                        <label for="status_3" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    $150.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-04.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Dr. Sofia Brient</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Urology</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/patients/patient4.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html"> Michelle Fairfax</a>
-                                                    </h2>
-                                                </td>
-                                                <td>7 Nov 2023 <span class="text-primary d-block">1.00 PM - 1.20 PM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_4" class="check" />
-                                                        <label for="status_4" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    $150.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-05.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Dr. Marvin Campbell</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Orthopaedics</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/patients/patient5.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Gina Moore</a>
-                                                    </h2>
-                                                </td>
-                                                <td>15 Nov 2023 <span class="text-primary d-block">1.00 PM - 1.15 PM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_5" class="check" />
-                                                        <label for="status_5" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    $200.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-06.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Dr. Katharine Berthold</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Orthopaedics</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/patients/patient6.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Elsie Gilley</a>
-                                                    </h2>
-                                                </td>
-                                                <td>16 Nov 2023 <span class="text-primary d-block">1.00 PM - 1.15 PM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_6" class="check" />
-                                                        <label for="status_6" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    $250.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-07.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Dr. Linda Tobin</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Neurology</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/patients/patient7.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Joan Gardner</a>
-                                                    </h2>
-                                                </td>
-                                                <td>18 Nov 2023 <span class="text-primary d-block">1.10 PM - 1.25 PM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_7" class="check" />
-                                                        <label for="status_7" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    $260.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-08.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Dr. Paul Richard</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Dermatology</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/patients/patient8.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html"> Daniel Griffing</a>
-                                                    </h2>
-                                                </td>
-                                                <td>18 Nov 2023 <span class="text-primary d-block">11.10 AM - 11.25 AM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_8" class="check" />
-                                                        <label for="status_8" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    $260.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-09.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Dr. John Gibbs</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Dental</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/patients/patient9.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Walter Roberson</a>
-                                                    </h2>
-                                                </td>
-                                                <td>21 Nov 2023 <span class="text-primary d-block">12.10 PM - 12.25 PM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_9" class="check" />
-                                                        <label for="status_9" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    $300.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-10.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Dr. Olga Barlow</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Dental</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/patients/patient10.jpg" alt="User Image" /></a>
-                                                        <a href="profile.html">Robert Rhodes</a>
-                                                    </h2>
-                                                </td>
-                                                <td>23 Nov 2023 <span class="text-primary d-block">12.10 PM - 12.25 PM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_11" class="check" />
-                                                        <label for="status_11" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    $300.00
-                                                </td>
-                                            </tr>
+
+                                            {listbooking.map((booking) => (
+                                                <tr key={booking.id}>
+                                                    <td>{booking.id}</td>
+                                                    <td>{booking.patient.name}</td>
+                                                    <td>{booking.patient.gender}</td>
+                                                    <td>{booking.patient.phonenumber}</td>
+                                                    <td>{booking.department.name}</td>
+                                                    <td>{booking.shift.session}</td>
+                                                    <td>{booking.date}</td>
+                                                    <td>{booking.shift.time}</td>
+                                                    <td>
+                                                        <span className={`badge rounded-pill inv-badge ${getStatusBadgeClass(booking.status)}`}>
+                                                            {booking.status === 1 ? "Completed" : "Incomplete"}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            ))}
                                         </tbody>
                                     </table>
                                 </div>

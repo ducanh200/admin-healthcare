@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import api from "../../services/api";
+import api, { setAuthToken } from "../../services/api";
 import url from "../../services/url";
 import { toast } from "react-toastify";
 function Department() {
   const [departments, setDepartments] = useState([]);
-
+  const [token, setToken] = useState("");
   useEffect(() => {
     const loadDepartment = async () => {
       try {
@@ -15,9 +15,15 @@ function Department() {
       }
     };
     loadDepartment();
+  }, [token]);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("accessToken"); 
+    if (storedToken) {
+      setToken(storedToken);
+      console.log(storedToken);
+    }
   }, []);
-
-
 
   const [name, setName] = useState("");
   const [expense, setExpense] = useState("");
@@ -104,11 +110,11 @@ function Department() {
       setEditDescription('');
       setEditThumbnail(null);
 
-      toast.success('A department is created succeed!');
+      toast.success('A department is updated succeed!');
     } catch (error) {
 
-      console.error("Error create department:", error);
-      toast.error('An error occurred while create the department.');
+      console.error("Error update department:", error);
+      toast.error('An error occurred while update the department.');
     }
   };
 

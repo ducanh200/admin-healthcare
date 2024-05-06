@@ -29,10 +29,11 @@ const url = {
     DOCTOR:{
         LIST:"/doctors",
         CREATE:"/doctors",
-        EDIT:"/doctors",
+        EDIT:"/doctors/",
+        DELETE:"/doctors/",
         GETBYID:"/doctors",
         GETBYDEPARTMENTID:"/doctors/departmentId",
-        DELETE:"/doctors",
+        
         
     }
     
