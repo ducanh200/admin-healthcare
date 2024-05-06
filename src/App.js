@@ -12,6 +12,10 @@ import Department from './components/pages/department';
 import Medicine from './components/pages/medicine';
 import { ToastContainer } from 'react-toastify';
 import Status_1 from './components/pages/booking/status_1';
+import Create_doctor from './components/pages/doctor/create_doctor';
+import Profile_Patient from './components/pages/profile_patient';
+import { useJwt } from 'react-jwt';
+
 import Doctor from './components/pages/doctor';
 
 
@@ -32,26 +36,28 @@ function App() {
             <Sidebar />
           </>
         )}
-        {!isLoginPage && !isLoggedIn && (
-          <Navigate to="/login" />
-        )}
-        {!isLoginPage && <Header currentLocation={location.pathname}/>}
-        {!isLoginPage && <Sidebar currentLocation={location.pathname}/>}
-        <Routes>
-          <Route path='/login' element={<Login/>}/>
-          {isLoggedIn && (
-            <>
-              <Route path='/dashboard' element={<Dashbroad/>}/>
-              <Route path='/profile' element={<Profile/>}/>
-              <Route path='/doctor' element={<Doctor/>}/>
-              <Route path='/list_patient' element={<List_patient/>}/>
-              <Route path='/department' element={<Department/>}/>
-              <Route path='/list_booking' element={<List_booking/>}/>
-              <Route path='/arrived' element={<Status_1/>}/>
-              <Route path='/medicine' element={<Medicine/>}/>
-            </>
-          )}
-        </Routes>
+      {!isHomeRoute() && <Header currentLocation={location.pathname}/>}
+      {!isHomeRoute() && <Sidebar currentLocation={location.pathname}/>}
+      <Routes>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/dashboard' element={<Dashbroad/>}/>
+        <Route path='/create_doctor' element={<Create_doctor/>}/>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/invoice_reports' element={<Invoice_reports/>}/>
+        <Route path='/list_doctor' element={<List_doctor/>}/>
+        <Route path='/list_patient' element={<List_patient/>}/>
+        <Route path='/department' element={<Department/>}/>
+        <Route path='/list_booking' element={<List_booking/>}/>
+        <Route path='login' element={<Login/>}/>
+        <Route path='/' element={<Dashbroad/>}/>
+        <Route path='/arrived' element={<Status_1/>}/>
+        <Route path='/medicine' element={<Medicine/>}/>
+        <Route path='/profile_patient/:id' element={<Profile_Patient/>}/>
+       
+
+      </Routes>
+
+     
         {!isLoginPage && (
           <>
             {/* <Footer /> */}
