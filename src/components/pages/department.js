@@ -26,14 +26,16 @@ function Department() {
   }, []);
 
   const [name, setName] = useState("");
+  const [expense, setExpense] = useState("");
   const [maxBooking, setMaxBooking] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
-  const createDepartment = async (name, maxBooking, description, thumbnail) => {
+  const createDepartment = async (name, expense, maxBooking, description, thumbnail) => {
     try {
       const formData = new FormData();
 
       formData.append('name', name);
+      formData.append('expense', expense);
       formData.append('maxBooking', maxBooking);
       formData.append('description', description);
       formData.append('thumbnail', thumbnail);
@@ -54,8 +56,9 @@ function Department() {
   };
   const handlSaveDepartment = async () => {
     try {
-      let res = await createDepartment(name, maxBooking, description, thumbnail);
+      let res = await createDepartment(name, expense, maxBooking, description, thumbnail);
       setName('');
+      setExpense('');
       setMaxBooking('');
       setDescription('');
       setThumbnail(null);
@@ -73,14 +76,16 @@ function Department() {
 
 
   const [editName, setEditName] = useState("");
+  const [editExpense, setEditExpense] = useState("");
   const [editMaxBooking, setEditMaxBooking] = useState("");
   const [editDescription, setEditDescription] = useState("");
   const [editThumbnail, setEditThumbnail] = useState("");
 
-  const editDeparment = async (editName, editMaxBooking, editDescription, editThumbnail) => {
+  const editDeparment = async (editName, editExpense, editMaxBooking, editDescription, editThumbnail) => {
     try {
       const formData = new FormData();
       formData.append('name', editName);
+      formData.append('expense', editExpense);
       formData.append('maxBooking', editMaxBooking);
       formData.append('description', editDescription);
       formData.append('thumbnail', editThumbnail);
@@ -98,8 +103,9 @@ function Department() {
   };
   const handlEditDepartment = async () => {
     try {
-      let res = await editDeparment(editName, editMaxBooking, editDescription, editThumbnail);
+      let res = await editDeparment(editName, editExpense, editMaxBooking, editDescription, editThumbnail);
       setEditName('');
+      setEditExpense('');
       setEditMaxBooking('');
       setEditDescription('');
       setEditThumbnail(null);
@@ -114,6 +120,7 @@ function Department() {
 
   useEffect(() => {
     setEditName(dataDepartment.name);
+    setEditExpense(dataDepartment.expense);
     setEditMaxBooking(dataDepartment.maxBooking);
     setEditDescription(dataDepartment.description);
     setEditThumbnail(dataDepartment.thumbnail);
@@ -163,6 +170,7 @@ function Department() {
                         <tr>
                           <th>ID</th>
                           <th>Department</th>
+                          <th>Expense</th>
                           <th>Max Booking</th>
                           <th>Description</th>
                           <th>Action</th>
@@ -181,6 +189,7 @@ function Department() {
                                 <a href="profile.html">{department.name}</a>
                               </h2>
                             </td>
+                            <td>{department.expense}$</td>
                             <td>{department.maxBooking}</td>
                             <td>{department.description}</td>
                             <td>
@@ -220,7 +229,12 @@ function Department() {
                       <input type="text" class="form-control" value={name} onChange={(event) => setName(event.target.value)} />
                     </div>
                   </div>
-                  
+                  <div class="col-sm-6">
+                    <div class="mb-3">
+                      <label class="mb-2">Expense</label>
+                      <input type="number" class="form-control" value={expense} onChange={(event) => setExpense(event.target.value)} />
+                    </div>
+                  </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label class="mb-2">Max Booking</label>
@@ -263,7 +277,12 @@ function Department() {
                       <input type="text" class="form-control" value={editName} onChange={(event) => setEditName(event.target.value)} />
                     </div>
                   </div>
-                  
+                  <div class="col-sm-6">
+                    <div class="mb-3">
+                      <label class="mb-2">Expense</label>
+                      <input type="number" class="form-control" value={editExpense} onChange={(event) => setEditExpense(event.target.value)} />
+                    </div>
+                  </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label class="mb-2">Max Booking</label>
