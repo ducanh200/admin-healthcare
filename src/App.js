@@ -16,6 +16,7 @@ import Medicine from './components/pages/medicine';
 import { ToastContainer, toast } from 'react-toastify';
 import Status_1 from './components/pages/booking/status_1';
 import Create_doctor from './components/pages/doctor/create_doctor';
+import Profile_Patient from './components/pages/profile_patient';
 import { useJwt } from 'react-jwt';
 
 
@@ -77,6 +78,7 @@ const ProtectedLoginRoute = ({ element }) => {
         <Route path='/' element={<Dashbroad/>}/>
         <Route path='/arrived' element={<Status_1/>}/>
         <Route path='/medicine' element={<Medicine/>}/>
+        <Route path='/profile_patient/:id' element={<Profile_Patient/>}/>
        
 
       </Routes>
