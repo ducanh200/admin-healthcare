@@ -14,11 +14,12 @@ const url = {
     },
     BOOKING:{
         LIST:"/bookings",
-        STATUS_CHANGE:"/bookings/updateStatus/"
+        STATUS_CHANGE:"/bookings/updateStatus/",
+        GETBYDEPARTMENTID:"/bookings/getByDepartmentId/"
     },
     PATIENT:{
         LIST:"/patients",
-        GET:"/patients/getbyid"
+        GETBYID:"/patients"
     },
     MEDICINE:{
         LIST: "/medicine",

@@ -23,7 +23,7 @@ function Status_1() {
     const [patient,setPatient] = useState({});
     const loadPatient = async (patientId) => {
         try {
-          const rs = await api.get(url.PATIENT.GETID + `/${patientId}`);
+          const rs = await api.get(url.PATIENT.GETBYID + `/${patientId}`);
           setPatient(rs.data); 
         } catch (error) {
           console.error("Error:", error);
