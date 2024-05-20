@@ -27,10 +27,10 @@ function Header() {
     return (
         <div className="header">
             <div className="header-left">
-                <a href="/dashbroad" className="logo">
+                <a href="/dashboard" className="logo">
                     <img src="assets/img/logo.png" alt="Logo" />
                 </a>
-                <a href="/dashbroad" className="logo logo-small">
+                <a href="/dashboard" className="logo logo-small">
                     <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30" />
                 </a>
             </div>

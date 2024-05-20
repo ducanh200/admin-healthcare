@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import api from "../../services/api";
 import url from "../../services/url";
-function List_patient() {   
-    const [patients, setPatient] = useState([]);  
+import { useNavigate } from "react-router-dom";
+function List_patient() {
+    const navigate = useNavigate()
+    const [patients, setPatient] = useState([]);
     const loadPatient = async () => {
         try {
             const rs = await api.get(url.PATIENT.LIST);
             setPatient(rs.data);
-        } catch (error) {          
-        }   
+        } catch (error) {
+        }
     };
     useEffect(() => {
-        loadPatient();     
+        loadPatient();
     }, []);
+    const handleClick = (patientId) => {
+        navigate(`/profile_patient/${patientId}`)
+    };
     return (
         <div className="page-wrapper" style={{ textAlign: "justify" }}>
             <div className="content container-fluid">
@@ -45,28 +49,24 @@ function List_patient() {
                                         </thead>
                                         <tbody>
                                             {patients.map((patient) => (
-                                                <tr key={patient.id}>
-                                                    <td>#{patient.id}</td>
+                                                <tr>
+                                                    <td>{patient.id}</td>
                                                     <td>
                                                         <h2 className="table-avatar">
-                                                         <td> {patient.name}</td>
+                                                            <td> {patient.name}</td>
                                                         </h2>
                                                     </td>
                                                     <td>{patient.email}</td>
                                                     <td>{patient.gender}</td>
-                                                    <td>{patient.birthday}</td> 
+                                                    <td>{patient.birthday}</td>
                                                     <td>{patient.phonenumber}</td>
                                                     <td>{patient.address}</td>
                                                     <td>{patient.city}</td>
-                                                    <td>
-                                                    <td> <Link 
-                                                            to={`/profile_patient/${patient.id}`} 
-                                                            className="btn btn-primary" 
-                                                            style={{ border: "0", backgroundColor: "#03a9f3" }}
-                                                        >
-                                                            View
-                                                        </Link></td>
-                                                    </td>
+                                                    <div className="table-action">
+                                                        <button className="btn btn-primary" onClick={() => handleClick(patient.id)}>
+                                                            <i className="far fa-eye"></i> View Profile
+                                                        </button>
+                                                    </div>
                                                 </tr>
                                             ))}
                                         </tbody>

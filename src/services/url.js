@@ -18,7 +18,7 @@ const url = {
     },
     PATIENT:{
         LIST:"/patients",
-        GET:"/patients/getbyid"
+        GETBYID:"/patients"
     },
     MEDICINE:{
         LIST: "/medicine",
