@@ -15,7 +15,8 @@ const url = {
     BOOKING:{
         LIST:"/bookings",
         STATUS_CHANGE:"/bookings/updateStatus/",
-        GETBYDEPARTMENTID:"/bookings/getByDepartmentId/"
+        GETBYDEPARTMENTID:"/bookings/getByDepartmentId/",
+        GETBYMONTH:"/bookings/byMonthAndCurrentYear"
     },
     PATIENT:{
         LIST:"/patients",

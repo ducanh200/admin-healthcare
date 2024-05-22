@@ -62,7 +62,7 @@ function Dashbroad() {
     options: {
         title: {
         display: true,
-        text: "World Wide Wine Production 2018"
+        text: "The chart shows the departments"
         }
     }
     });
@@ -72,35 +72,40 @@ function Dashbroad() {
     }, [departments]);
 
 
-    useEffect(()=>{ 
-        const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    const yValues = [55, 49, 44, 24, 15];
-    const barColors = ["red", "green","blue","orange","brown"];
-
-    const ctx= document.getElementById("myChart2");
-
-    new window.Chart(ctx, {
-    type: "bar",
-    data: {
-        labels: xValues,
-        datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-        }]
-    },
-    options: {
-        legend: {display: false},
-        title: {
-        display: true,
-        text: "World Wine Production 2018"
-        }
-    }
-    });
-    })
-
-
-
+    useEffect(() => {
+        const fetchMonthlyBookings = async () => {
+          try {
+            const xValues = Array.from({ length: 12 }, (_, i) => i + 1);
+            const responses = await Promise.all(xValues.map(month => api.get(`${url.BOOKING.GETBYMONTH}?month=${month}`)));
+            const yValues = responses.map(response => response.data.length);
+            const barColors = ["red", "green", "blue", "orange", "brown"];
     
+            const ctx = document.getElementById("myChart2");
+    
+            new window.Chart(ctx, {
+              type: "bar",
+              data: {
+                labels: xValues,
+                datasets: [{
+                  backgroundColor: barColors,
+                  data: yValues
+                }]
+              },
+              options: {
+                legend: { display: false },
+                title: {
+                  display: true,
+                  text: "Bookings by Month for Current Year"
+                }
+              }
+            });
+          } catch (error) {
+            console.error("Error fetching monthly bookings data:", error);
+          }
+        };
+    
+        fetchMonthlyBookings();
+      }, []);
 
     
 
