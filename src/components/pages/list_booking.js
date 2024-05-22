@@ -9,7 +9,9 @@ function List_booking() {
         const loadListbooking = async () => {
             try {
                 const rs = await api.get(url.BOOKING.LIST);
-                setListbooking(rs.data);
+                // Sort the bookings by ID in descending order
+                const sortedBookings = rs.data.sort((a, b) => b.id - a.id);
+                setListbooking(sortedBookings);
             } catch (error) {
                 console.error("Error loading list booking:", error);
             }
@@ -51,7 +53,6 @@ function List_booking() {
                                             </tr>
                                         </thead>
                                         <tbody>
-
                                             {listbooking.map((booking) => (
                                                 <tr key={booking.id}>
                                                     <td>{booking.id}</td>
@@ -78,7 +79,7 @@ function List_booking() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default List_booking;

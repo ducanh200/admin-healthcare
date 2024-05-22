@@ -13,7 +13,7 @@ import Medicine from './components/pages/medicine';
 import { ToastContainer } from 'react-toastify';
 import Status_1 from './components/pages/booking/status_1';
 import Doctor from './components/pages/doctor';
-import Profile_Patient from './components/pages/profile_patient';
+
 
 
 
@@ -51,7 +51,6 @@ function App() {
               <Route path='/list_booking' element={<List_booking/>}/>
               <Route path='/arrived' element={<Status_1/>}/>
               <Route path='/medicine' element={<Medicine/>}/>
-              <Route path='/profile_patient/:id' element={<Profile_Patient/>}/>
 
             </>
           )}
