@@ -15,9 +15,6 @@ function List_patient() {
     useEffect(() => {
         loadPatient();
     }, []);
-    const handleClick = (patientId) => {
-        navigate(`/profile_patient/${patientId}`)
-    };
     return (
         <div className="page-wrapper" style={{ textAlign: "justify" }}>
             <div className="content container-fluid">
@@ -61,12 +58,7 @@ function List_patient() {
                                                     <td>{patient.birthday}</td>
                                                     <td>{patient.phonenumber}</td>
                                                     <td>{patient.address}</td>
-                                                    <td>{patient.city}</td>
-                                                    <div className="table-action">
-                                                        <button className="btn btn-primary" onClick={() => handleClick(patient.id)}>
-                                                            <i className="far fa-eye"></i> View Profile
-                                                        </button>
-                                                    </div>
+                                                    <td>{patient.city}</td>                                              
                                                 </tr>
                                             ))}
                                         </tbody>

@@ -163,7 +163,7 @@ function Department() {
               </div>
             </div>
           </div>
-                <div class="card-body">
+                <div class="card-body" style={{paddingTop:"10px"}}>
                   <div class="table-responsive">
                     <table class="datatable table table-hover table-center mb-0">
                       <thead>
