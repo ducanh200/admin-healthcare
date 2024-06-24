@@ -4,14 +4,28 @@ import url from "../../../services/url";
 import { toast } from "react-toastify";
 
 function Status_1() {
-    const [bookings, setBookings] = useState([]);
+    const [bookingsToday, setBookingsToday] = useState([]);
     useEffect(() => {
-        const loadBooking = async () => {
+        const loadBookingToday = async () => {
             try {
                 const rs = await api.get(url.BOOKING.LIST);
                 const today = new Date().toISOString().split('T')[0]; 
                 const filteredBookings = rs.data.filter(booking =>
                     booking.date === today && booking.status === 1
+                );
+                setBookingsToday(filteredBookings);
+            } catch (error) {
+                console.error("Error loading list booking:", error);
+            }
+        };
+        loadBookingToday();
+    }, []);
+    const [bookings, setBookings] = useState([]);
+    useEffect(() => {
+        const loadBooking = async () => {
+            try {
+                const rs = await api.get(url.BOOKING.LIST);
+                const filteredBookings = rs.data.filter(booking =>booking.status === 1
                 );
                 setBookings(filteredBookings);
             } catch (error) {
@@ -55,7 +69,7 @@ function Status_1() {
                             <div class="card-bory">
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <div style={{ marginTop: "20px", marginLeft: "30px" }}>
-                                        <h3>List Booking</h3>
+                                        <h3>List Booking Today</h3>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +86,7 @@ function Status_1() {
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        {bookings.map((booking) => (
+                                        {bookingsToday.map((booking) => (
                                         <tbody>
                                             <tr>
                                                 <td>
@@ -101,6 +115,61 @@ function Status_1() {
 <i class="fas fa-check"></i>  
 Confirm
 </a>
+                                                </td>
+                                            </tr>
+                                           
+                                        </tbody>
+                                         ))}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-bory">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    <div style={{ marginTop: "20px", marginLeft: "30px" }}>
+                                        <h3>List Booking</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body" style={{ paddingTop: "10px" }}>
+                                <div class="table-responsive">
+                                    <table class=" table table-hover table-center mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>User</th>
+                                                <th>Department</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                            </tr>
+                                        </thead>
+                                        {bookings.map((booking) => (
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                               {booking.id}
+                                                </td>
+                                                <td>
+                                            Email: {booking.patient.email}<br/>Phone: {booking.patient.phonenumber}
+                                            <br/> <br/><a href="#" class="btn btn-sm bg-info-light" data-bs-toggle="modal" data-bs-target="#appt_details"onClick={()=>loadPatient(booking.patient.id)}>
+<i class="far fa-eye" ></i> Click view detail User
+</a></td>
+                                                <td>
+                                                <h2 class="table-avatar">
+<a  class="avatar avatar-sm me-2">
+<img class="avatar-img" src={booking.department.thumbnail} alt="Speciality"/>
+</a>
+{booking.department.name}
+</h2>
+                                                </td>
+                                                <td>{booking.date}</td>
+                                                <td>
+                                               {booking.shift.time}<br/>{booking.shift.session}
                                                 </td>
                                             </tr>
                                            
