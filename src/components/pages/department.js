@@ -18,7 +18,7 @@ function Department() {
   }, [token]);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("accessToken"); 
+    const storedToken = localStorage.getItem("accessToken");
     if (storedToken) {
       setToken(storedToken);
       console.log(storedToken);
@@ -153,17 +153,17 @@ function Department() {
           <div class="row">
             <div class="col-sm-12">
               <div class="card">
-              <div class="card-bory">
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div style={{ marginTop: "20px", marginLeft: "30px" }}>
-                <h3>List Department</h3>
-              </div>
-              <div style={{ marginTop: "15px", textAlign: "right", marginRight: "30px" }}>
-                <a href="#Add_Specialities_details" data-bs-toggle="modal" class="btn btn-primary float-end mt-2">Add Department</a>
-              </div>
-            </div>
-          </div>
-                <div class="card-body" style={{paddingTop:"10px"}}>
+                <div class="card-bory">
+                  <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <div style={{ marginTop: "20px", marginLeft: "30px" }}>
+                      <h3>List Department</h3>
+                    </div>
+                    <div style={{ marginTop: "15px", textAlign: "right", marginRight: "30px" }}>
+                      <a href="#Add_Specialities_details" data-bs-toggle="modal" class="btn btn-primary float-end mt-2">Add Department</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body" style={{ paddingTop: "10px" }}>
                   <div class="table-responsive">
                     <table class="datatable table table-hover table-center mb-0">
                       <thead>
@@ -183,10 +183,10 @@ function Department() {
                             <td>{department.id}</td>
                             <td>
                               <h2 class="table-avatar">
-                                <a href="profile.html" class="avatar avatar-sm me-2">
+                                <a class="avatar avatar-sm me-2">
                                   <img class="avatar-img" src={department.thumbnail} alt="Speciality" />
                                 </a>
-                                <a href="profile.html">{department.name}</a>
+                                <a >{department.name}</a>
                               </h2>
                             </td>
                             <td>{department.expense}$</td>
