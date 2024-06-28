@@ -35,9 +35,14 @@ const url = {
         DELETE:"/doctors/",
         GETBYID:"/doctors",
         GETBYDEPARTMENTID:"/doctors/departmentId",
-        
-        
+        },
+    DEVICE:{
+        LIST:"/devices",
+        CREATE:"/devices",
+        EDIT:"/devices/",
+        DELETE:"/devices/"
     }
+    
     
    
 }

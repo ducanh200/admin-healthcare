@@ -25,6 +25,9 @@ function Sidebar() {
                         <li>
                             <a href="/arrived"><i className="far fa-clipboard"></i> <span>Arrived</span></a>
                         </li>
+                        <li>
+                            <a href="/device"><i className="fe fe-vector"></i> <span>Device</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
