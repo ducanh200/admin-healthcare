@@ -63,7 +63,7 @@ function Status_1() {
       
         // Adjust the date to ICT (UTC+7)
         const utcOffset = date.getTimezoneOffset(); // in minutes
-        const ictOffset = 31 * 60; // in minutes (UTC+7)
+        const ictOffset = 14 * 60; // in minutes (UTC+7)
         const totalOffset = ictOffset + utcOffset;
       
         // Adjust the date to ICT by adding the offset in milliseconds
