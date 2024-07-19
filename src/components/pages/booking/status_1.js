@@ -11,7 +11,7 @@ function Status_1() {
                 const rs = await api.get(url.BOOKING.LIST);
                 const today = new Date().toISOString().split('T')[0];
                 const filteredBookings = rs.data.filter(booking =>
-                    booking.date === today && booking.status === 1
+                    booking.date === getICTDate() && booking.status === 1
                 );
                 setBookingsToday(filteredBookings);
             } catch (error) {
@@ -58,6 +58,23 @@ function Status_1() {
             toast.error("An erroer!");
         }
     };
+    const getICTDate = () => {
+        const date = new Date();
+      
+        // Adjust the date to ICT (UTC+7)
+        const utcOffset = date.getTimezoneOffset(); // in minutes
+        const ictOffset = 31 * 60; // in minutes (UTC+7)
+        const totalOffset = ictOffset + utcOffset;
+      
+        // Adjust the date to ICT by adding the offset in milliseconds
+        const ictDate = new Date(date.getTime() + totalOffset * 60 * 1000);
+      
+        // Format the date to YYYY-MM-DD
+        const formattedDate = ictDate.toISOString().split('T')[0];
+        return formattedDate;
+      };
+      
+      
 
     return (
         <>
