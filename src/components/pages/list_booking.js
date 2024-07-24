@@ -49,7 +49,6 @@ function List_booking() {
                                                 <th>Session</th>
                                                 <th>Date</th>
                                                 <th>Time</th>
-                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -63,11 +62,6 @@ function List_booking() {
                                                     <td>{booking.shift.session}</td>
                                                     <td>{booking.date}</td>
                                                     <td>{booking.shift.time}</td>
-                                                    <td>
-                                                        <span className={`badge rounded-pill inv-badge ${getStatusBadgeClass(booking.status)}`}>
-                                                            {booking.status === 1 ? "Completed" : "Incomplete"}
-                                                        </span>
-                                                    </td>
                                                 </tr>
                                             ))}
                                         </tbody>
