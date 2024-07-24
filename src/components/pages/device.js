@@ -172,7 +172,7 @@ function Device() {
                                                     <tr key={device.id}>
                                                         <td style={{ width: '10%' }}>{device.id}</td>
                                                         <td style={{ width: '20%' }}>{device.name}</td>
-                                                        <td style={{ width: '20%' }}>{device.description}</td>
+                                                        <td style={{ width: '20%' }}><p style={{width:'500px',textOverflow:'ellipsis',overflow:"hidden",whiteSpace:"nowrap"}}>{device.description}</p></td>
                                                         <td style={{ width: '20%' }}>$ {device.expense}</td>
                                                         <td style={{ width: '20%' }}>{device.department.name}</td>
                                                         <td style={{ width: '10%' }}>
