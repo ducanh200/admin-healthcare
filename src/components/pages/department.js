@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import api, { setAuthToken } from "../../services/api";
 import url from "../../services/url";
 import { toast } from "react-toastify";
+
 function Department() {
   const [departments, setDepartments] = useState([]);
   const [token, setToken] = useState("");
+
   useEffect(() => {
     const loadDepartment = async () => {
       try {
@@ -30,17 +32,15 @@ function Department() {
   const [maxBooking, setMaxBooking] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
+  
   const createDepartment = async (name, expense, maxBooking, description, thumbnail) => {
     try {
       const formData = new FormData();
-
       formData.append('name', name);
       formData.append('expense', expense);
       formData.append('maxBooking', maxBooking);
       formData.append('description', description);
       formData.append('thumbnail', thumbnail);
-
-
 
       const response = await api.post(url.DEPARTMENT.CREATE, formData, {
         headers: {
@@ -54,6 +54,7 @@ function Department() {
       throw error;
     }
   };
+
   const handlSaveDepartment = async () => {
     try {
       let res = await createDepartment(name, expense, maxBooking, description, thumbnail);
@@ -74,7 +75,6 @@ function Department() {
     setDataDepartment(department);
   }
 
-
   const [editName, setEditName] = useState("");
   const [editExpense, setEditExpense] = useState("");
   const [editMaxBooking, setEditMaxBooking] = useState("");
@@ -89,6 +89,7 @@ function Department() {
       formData.append('maxBooking', editMaxBooking);
       formData.append('description', editDescription);
       formData.append('thumbnail', editThumbnail);
+
       const response = await api.put(url.DEPARTMENT.EDIT + `${dataDepartment.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -101,6 +102,7 @@ function Department() {
       throw error;
     }
   };
+
   const handlEditDepartment = async () => {
     try {
       let res = await editDeparment(editName, editExpense, editMaxBooking, editDescription, editThumbnail);
@@ -112,7 +114,6 @@ function Department() {
 
       toast.success('A department is updated succeed!');
     } catch (error) {
-
       console.error("Error update department:", error);
       toast.error('An error occurred while update the department.');
     }
@@ -126,26 +127,30 @@ function Department() {
     setEditThumbnail(dataDepartment.thumbnail);
   }, [dataDepartment])
 
-
-
   const DeleteDepartment = (id) => {
     return api.delete(url.DEPARTMENT.DELETE + `${id}`);
   }
+
   const ConfirmDelete = async () => {
     try {
       const res = await DeleteDepartment(dataDepartment.id);
 
       if (res.status === 200) {
         toast.success('Delete Success');
-
       } else {
         toast.error('An error occurred while deleting the department');
       }
     } catch (error) {
-      toast.error("An erroer!");
+      toast.error("An error!");
       console.error('Error deleting department:', error);
     }
   }
+
+  const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength) return text;
+    return text.substr(0, maxLength) + '...';
+  };
+
   return (
     <>
       <div class="page-wrapper">
@@ -153,7 +158,7 @@ function Department() {
           <div class="row">
             <div class="col-sm-12">
               <div class="card">
-                <div class="card-bory">
+                <div class="card-body">
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <div style={{ marginTop: "20px", marginLeft: "30px" }}>
                       <h3>List Department</h3>
@@ -177,8 +182,7 @@ function Department() {
                         </tr>
                       </thead>
                       {departments.map((department) => (
-                        <tbody>
-
+                        <tbody key={department.id}>
                           <tr>
                             <td>{department.id}</td>
                             <td>
@@ -186,18 +190,18 @@ function Department() {
                                 <a class="avatar avatar-sm me-2">
                                   <img class="avatar-img" src={department.thumbnail} alt="Speciality" />
                                 </a>
-                                <a >{department.name}</a>
+                                <a>{department.name}</a>
                               </h2>
                             </td>
                             <td>{department.expense}$</td>
                             <td>{department.maxBooking}</td>
-                            <td>{department.description}</td>
+                            <td>{truncateText(department.description, 50)}</td>
                             <td>
                               <div class="actions">
                                 <a class="btn btn-sm bg-success-light me-2" data-bs-toggle="modal" href="#edit_specialities_details" onClick={() => handlData(department)}>
                                   <i class="fe fe-pencil"></i> Edit
                                 </a>
-                                <a data-bs-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light" onClick={() => handlData(department)} >
+                                <a data-bs-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light" onClick={() => handlData(department)}>
                                   <i class="fe fe-trash"></i> Delete
                                 </a>
                               </div>
@@ -229,33 +233,34 @@ function Department() {
                       <input type="text" class="form-control" value={name} onChange={(event) => setName(event.target.value)} />
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-12">
                     <div class="mb-3">
                       <label class="mb-2">Expense</label>
-                      <input type="number" class="form-control" value={expense} onChange={(event) => setExpense(event.target.value)} />
+                      <input type="text" class="form-control" value={expense} onChange={(event) => setExpense(event.target.value)} />
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-12">
                     <div class="mb-3">
                       <label class="mb-2">Max Booking</label>
-                      <input type="number" class="form-control" value={maxBooking} onChange={(event) => setMaxBooking(event.target.value)} />
-                    </div>
-                  </div>
-                  <div class=" col-sm-12">
-                    <div class="mb-3">
-                      <label class="mb-2">Image</label><br />
-                      <input type="file" onChange={(event) => setThumbnail(event.target.files[0])} />
+                      <input type="text" class="form-control" value={maxBooking} onChange={(event) => setMaxBooking(event.target.value)} />
                     </div>
                   </div>
                   <div class="col-sm-12">
                     <div class="mb-3">
                       <label class="mb-2">Description</label>
-                      <textarea type="label" class="form-control" value={description} onChange={(event) => setDescription(event.target.value)} />
+                      <textarea class="form-control" value={description} onChange={(event) => setDescription(event.target.value)}></textarea>
                     </div>
                   </div>
-
+                  <div class="col-sm-12">
+                    <div class="mb-3">
+                      <label class="mb-2">Upload Thumbnail</label>
+                      <input type="file" class="form-control" onChange={(event) => setThumbnail(event.target.files[0])} />
+                    </div>
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-primary w-100" onClick={() => handlSaveDepartment()}>Add Department</button>
+                <div class="submit-section">
+                  <button type="submit" onClick={() => handlSaveDepartment()} class="btn btn-primary btn-save">Submit</button>
+                </div>
               </form>
             </div>
           </div>
@@ -277,32 +282,34 @@ function Department() {
                       <input type="text" class="form-control" value={editName} onChange={(event) => setEditName(event.target.value)} />
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-12">
                     <div class="mb-3">
                       <label class="mb-2">Expense</label>
-                      <input type="number" class="form-control" value={editExpense} onChange={(event) => setEditExpense(event.target.value)} />
+                      <input type="text" class="form-control" value={editExpense} onChange={(event) => setEditExpense(event.target.value)} />
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-12">
                     <div class="mb-3">
                       <label class="mb-2">Max Booking</label>
-                      <input type="number" class="form-control" value={editMaxBooking} onChange={(event) => setEditMaxBooking(event.target.value)} />
-                    </div>
-                  </div>
-                  <div class=" col-sm-12">
-                    <div class="mb-3">
-                      <label class="mb-2">Image</label><br />
-                      <input type="file" onChange={(event) => setEditThumbnail(event.target.files[0])} />
+                      <input type="text" class="form-control" value={editMaxBooking} onChange={(event) => setEditMaxBooking(event.target.value)} />
                     </div>
                   </div>
                   <div class="col-sm-12">
                     <div class="mb-3">
                       <label class="mb-2">Description</label>
-                      <textarea type="label" class="form-control" value={editDescription} onChange={(event) => setEditDescription(event.target.value)} />
+                      <textarea class="form-control" value={editDescription} onChange={(event) => setEditDescription(event.target.value)}></textarea>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="mb-3">
+                      <label class="mb-2">Upload Thumbnail</label>
+                      <input type="file" class="form-control" onChange={(event) => setEditThumbnail(event.target.files[0])} />
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary w-100" onClick={() => handlEditDepartment()} >Update Department</button>
+                <div class="submit-section">
+                  <button type="submit" onClick={() => handlEditDepartment()} class="btn btn-primary btn-save">Save Changes</button>
+                </div>
               </form>
             </div>
           </div>
@@ -315,15 +322,15 @@ function Department() {
               <div class="form-content p-2">
                 <h4 class="modal-title">Delete</h4>
                 <p class="mb-4">Are you sure want to delete?</p>
-                <button type="button" class="btn btn-danger me-2" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={() => ConfirmDelete()}>Delete</button>
+                <button type="button" onClick={() => ConfirmDelete()} class="btn btn-primary">Save </button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Department;
