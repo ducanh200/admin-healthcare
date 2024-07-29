@@ -42,6 +42,9 @@ const url = {
         CREATE:"/devices",
         EDIT:"/devices/",
         DELETE:"/devices/"
+    },
+    RESULT:{
+        LIST:"/results"
     }
     
     

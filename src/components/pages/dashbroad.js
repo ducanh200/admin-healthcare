@@ -8,6 +8,19 @@ function Dashbroad() {
 
     const [departments, setDepartments] = useState([]);
     const [bookingCounts, setBookingCounts] = useState([]);
+    const [listbooking, setListbooking] = useState([]);
+    useEffect(() => {
+        const loadListbooking = async () => {
+            try {
+                const rs = await api.get(url.BOOKING.LIST);
+                const sortedBookings = rs.data.sort((a, b) => b.id - a.id);
+                setListbooking(sortedBookings);
+            } catch (error) {
+                console.error("Error loading list booking:", error);
+            }
+        };
+        loadListbooking();
+    }, []);
     const loadDepartment = async () => {
         try {
             const rs = await api.get(url.DEPARTMENT.LIST);
@@ -31,7 +44,34 @@ function Dashbroad() {
         loadDepartment();
     }, []);
 
+    const [patients, setPatients] = useState([]);
 
+    const loadPatients = async () => {
+        try {
+            const rs = await api.get(url.PATIENT.LIST);
+            setPatients(rs.data);
+            console.log(rs)
+            console.log(`Number of patients: ${rs.data.length}`);
+        } catch (error) {
+            console.error('Error loading patients:', error);
+        }
+    };
+
+    useEffect(() => {
+        loadPatients();
+    }, []);
+    const [doctors, setDoctors] = useState([]);
+  useEffect(() => {
+    const loadDoctor = async () => {
+      try {
+        const rs = await api.get(url.DOCTOR.LIST);
+        setDoctors(rs.data);
+      } catch (error) {
+        console.error("Error loading doctor:", error);
+      }
+    };
+    loadDoctor();
+  }, []);
     useEffect(() => {
         if (departments.length > 0) {
             const fetchBookings = async () => {
@@ -71,7 +111,33 @@ function Dashbroad() {
         }
     }, [departments]);
 
+    const [totalExpense, setTotalExpense] = useState(0);
 
+    const loadResults = async () => {
+        try {
+            const rs = await api.get(url.RESULT.LIST);
+            const results = rs.data;
+
+            // Tính tổng tất cả số tiền của expense
+            const totalExpense = results.reduce((total, result) => {
+                return total + (result.expense || 0); // Chú ý: Giả sử `expense` là số tiền trong mỗi `result`
+            }, 0);
+
+            console.log(`Total expense: ${totalExpense}`);
+            return totalExpense;
+        } catch (error) {
+            console.error("Error loading results:", error);
+            return 0;
+        }
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const total = await loadResults();
+            setTotalExpense(total);
+        };
+        fetchData();
+    }, []);
     useEffect(() => {
         const fetchMonthlyBookings = async () => {
             try {
@@ -121,11 +187,11 @@ function Dashbroad() {
                                         <i class="fe fe-money"></i>
                                     </span>
                                     <div class="dash-count">
-                                        <h3>168</h3>
+                                        <h3>{listbooking.length}</h3>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
-                                    <h6 class="text-muted">Booking Waiting</h6>
+                                    <h6 class="text-muted">Total Booking</h6>
                                     <div class="progress progress-sm">
                                         <div class="progress-bar bg-primary w-50"></div>
                                     </div>
@@ -141,7 +207,7 @@ function Dashbroad() {
                                         <i class="fe fe-credit-card"></i>
                                     </span>
                                     <div class="dash-count">
-                                        <h3>487</h3>
+                                        <h3>{patients.length}</h3>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
@@ -161,11 +227,11 @@ function Dashbroad() {
                                         <i class="fe fe-money"></i>
                                     </span>
                                     <div class="dash-count">
-                                        <h3>485</h3>
+                                        <h3>{doctors.length}</h3>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
-                                    <h6 class="text-muted">Appointment</h6>
+                                    <h6 class="text-muted">Doctor</h6>
                                     <div class="progress progress-sm">
                                         <div class="progress-bar bg-danger w-50"></div>
                                     </div>
@@ -181,7 +247,7 @@ function Dashbroad() {
                                         <i class="fe fe-folder"></i>
                                     </span>
                                     <div class="dash-count">
-                                        <h3>$62523</h3>
+                                        <h3>{totalExpense}</h3>
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
